@@ -12,9 +12,9 @@ jobs:
       - run:
           name: list android target
           command: android list target
-      - run:
-          name: Move into root folder
-          command: cd AndroidDemo
+      # - run:
+      #     name: Move into root folder
+      #     command: cd AndroidDemo
       - run:
           name: Get Current Directory name
           command: pwd  
