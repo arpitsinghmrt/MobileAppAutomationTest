@@ -6,7 +6,7 @@ jobs:
       # Android the primary container
       - image: circleci/android:api-26-ndk-r17b
     environment:
-      JVM_OPTS: -Xmx3200m
+      JVM_OPTS: -Xmx2048m
     steps:
       - checkout
       - run:
