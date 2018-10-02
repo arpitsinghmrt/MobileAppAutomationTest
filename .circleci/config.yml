@@ -17,6 +17,9 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "AndroidDemo/build.gradle" }}-{{ checksum  "AndroidDemo/app/build.gradle" }}
       - run:
+          name: Move into root folder
+          command: cd AndroidDemo/    
+      - run:
           name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
           command: sudo chmod +x ./gradlew
       - run:
