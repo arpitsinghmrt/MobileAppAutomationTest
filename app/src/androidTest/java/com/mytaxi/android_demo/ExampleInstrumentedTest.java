@@ -82,7 +82,7 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.btn_login))
                 .perform(click());
         Thread.sleep(6000);
-        onView(allOf(withId(R.id.textSearch), isDisplayed()))
+        onView(withId(R.id.textSearch))
                 .perform(typeText("sa"), closeSoftKeyboard());
         onView(withText("Sarah Scott"))
                 .inRoot(withDecorView(not(is(mActivity.getWindow().getDecorView()))))
