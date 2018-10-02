@@ -8,8 +8,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Move into root folder
-        command: cd AndroidDemo
+          name: Move into root folder
+          command: cd AndroidDemo
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
