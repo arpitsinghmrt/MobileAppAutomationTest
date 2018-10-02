@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Get Current Directory name
           command: pwd  
+          command: ls
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "AndroidDemo/app/build.gradle" }}
       - run:
