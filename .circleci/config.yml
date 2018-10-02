@@ -5,6 +5,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: list android target
+          command: android list target
+      - run:
           name: Move into root folder
           command: cd AndroidDemo
       - run:
