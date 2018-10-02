@@ -81,7 +81,7 @@ public class ExampleInstrumentedTest {
                 .perform(typeText("venture"), closeSoftKeyboard());
         onView(withId(R.id.btn_login))
                 .perform(click());
-        Thread.sleep(4000);
+        Thread.sleep(20000);
         onView(allOf(withId(R.id.textSearch), isDisplayed()))
                 .perform(typeText("sa"), closeSoftKeyboard());
         onView(withText("Sarah Scott"))
