@@ -82,7 +82,7 @@ public class ExampleInstrumentedTest {
                 .perform(click());
         onView(withId(R.id.textSearch))
                 .check(matches(isDisplayed()));
-
+        Thread.sleep(2000);
         onView(allOf(withId(R.id.textSearch), isDisplayed()))
                 .perform(typeText("sa"), closeSoftKeyboard());
         onView(withText("Sarah Scott"))
