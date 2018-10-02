@@ -61,6 +61,10 @@ jobs:
     test:
       docker:
       - image: circleci/android:api-25-alpha
+      environment:
+        JVM_OPTS: -Xmx3200m
+      steps:
+        - checkout
       override:
     # start the emulator
         - emulator -avd circleci-android22 -no-audio -no-window:
