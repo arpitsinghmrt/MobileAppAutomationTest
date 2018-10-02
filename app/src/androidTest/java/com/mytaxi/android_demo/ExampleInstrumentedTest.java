@@ -12,6 +12,7 @@ import android.support.test.espresso.util.HumanReadables;
 import android.support.test.espresso.util.TreeIterables;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import android.view.View;
 
 import com.mytaxi.android_demo.activities.MainActivity;
@@ -80,9 +81,6 @@ public class ExampleInstrumentedTest {
                 .perform(typeText("venture"), closeSoftKeyboard());
         onView(withId(R.id.btn_login))
                 .perform(click());
-        onView(withId(R.id.textSearch))
-                .check(matches(isDisplayed()));
-        Thread.sleep(4000);
         onView(allOf(withId(R.id.textSearch), isDisplayed()))
                 .perform(typeText("sa"), closeSoftKeyboard());
         onView(withText("Sarah Scott"))
