@@ -2,9 +2,6 @@ version: 2
 jobs:
   build:
     machine: true
-        - image: circleci/classic:latest
-    environment:
-      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
       - run:
