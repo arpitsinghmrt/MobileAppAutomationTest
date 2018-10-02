@@ -59,6 +59,8 @@ jobs:
       # - store_test_results:
       #     path: app/build/test-results
     test:
+      docker:
+      - image: circleci/android:api-25-alpha
       override:
     # start the emulator
         - emulator -avd circleci-android22 -no-audio -no-window:
