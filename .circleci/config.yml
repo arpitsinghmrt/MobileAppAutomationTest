@@ -10,8 +10,11 @@ jobs:
       - run:
           name: Move into root folder
           command: cd AndroidDemo
+      - run:
+          name: Get Current Directory name
+          command: pwd  
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "AndroidDemo/app/build.gradle" }}
       - run:
           name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
           command: sudo chmod +x ./gradlew
