@@ -4,7 +4,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      -run:
+      - run:
           name: list android target
           command: android list target
       - run:
