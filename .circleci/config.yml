@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/code
     docker:
       # Android the primary container
-      - image: circleci/android:api-26-alpha
+      - image: circleci/android:api-28-alpha
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
@@ -27,9 +27,9 @@ jobs:
       - run:
           name: Get Current Directory name
           command: pwd
-      - run:
-          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
-          command: sudo chmod +x ./gradlew -p AndroidDemo/
+      # - run:
+      #     name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
+      #     command: sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies -p AndroidDemo/
