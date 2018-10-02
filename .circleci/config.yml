@@ -1,8 +1,8 @@
 version: 2
 jobs:
   build:
-    docker:
-        - image: circleci/android:api-25-alpha
+    machine: true
+        - image: circleci/classic:latest
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
