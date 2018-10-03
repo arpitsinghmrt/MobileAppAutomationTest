@@ -14,7 +14,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
+import com.mytaxi.android_demo.activities.AuthenticationActivity;
 import com.mytaxi.android_demo.activities.MainActivity;
 
 import org.hamcrest.Matcher;
@@ -64,7 +66,6 @@ public class ExampleInstrumentedTest {
     public void setActivity() {
         mActivity = mActivityRule.getActivity();
     }
-
     @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
@@ -81,6 +82,8 @@ public class ExampleInstrumentedTest {
                 .perform(typeText("venture"), closeSoftKeyboard());
         onView(withId(R.id.btn_login))
                 .perform(click());
+
+        Thread.sleep(2000);
         onView(allOf(withId(R.id.textSearch), isDisplayed()))
                 .perform(typeText("sa"), closeSoftKeyboard());
         onView(withText("Sarah Scott"))

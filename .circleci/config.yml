@@ -33,10 +33,11 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-26;default;x86_64" && echo "no" | avdmanager create avd -n test4 -k "system-images;android-26;default;x86_64"
+          command: sdkmanager "system-images;android-26;default;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-26;default;x86"
       - run:
           name: Launch emulator
-          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator -avd test4 -noaudio -no-boot-anim -no-window -accel auto -verbose
+          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator -avd test -netdelay none -netspeed full -no-window -no-audio -gpu off
+
           background: true
       - run:
           name: Wait emulator
