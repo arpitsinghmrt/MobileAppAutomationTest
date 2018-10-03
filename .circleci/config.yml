@@ -36,13 +36,13 @@ jobs:
       # - run:
       #     name: Move into emulator
       #     command: cd ${ANDROID_HOME}/emulator
-      # - run:
-      #     name: Setup emulator
-      #     command: sdkmanager "system-images;android-25;google_apis;arm64-v8a" && echo "no" | avdmanager create avd -n test -k "system-images;android-25;google_apis;arm64-v8a"
-      # - run:
-      #     name: Launch emulator
-      #     command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && export PATH="${ANDROID_HOME}/emulator:$PATH" && emulator -avd test -netdelay none -netspeed full -no-window -no-audio -gpu off
-      #     background: true
+      - run:
+          name: Setup emulator
+          command: sdkmanager "system-images;android-25;google_apis;arm64-v8a" && echo "no" | avdmanager create avd -n test -k "system-images;android-25;google_apis;arm64-v8a"
+      - run:
+          name: Launch emulator
+          command: emulator -avd test -netdelay none -netspeed full -no-window -no-audio -gpu off
+          background: true
       # - run:
       #     name: Wait emulator
       #     command: |
@@ -52,8 +52,13 @@ jobs:
       #       sleep 30
       #       adb shell input keyevent 82
       - run:
+          name: get devices
+          command: adb devices 
+      - run:
           name: Run EspressoTests
           command: ./gradlew connectedAndroidTest
+          environment:
+            TERM: dumb
       - store_artifacts:
           path: app/build/reports
           destination: reports
