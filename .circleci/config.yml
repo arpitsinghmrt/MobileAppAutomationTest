@@ -5,10 +5,10 @@ jobs:
     docker:
       # Android the primary container
       - image: bitriseio/docker-android
-    environment:
-      TERM: dumb
-      _JAVA_OPTIONS: "-Xmx2048m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
-      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m"'
+    # environment:
+    #   TERM: dumb
+    #   _JAVA_OPTIONS: "-Xmx2048m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+    #   GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m"'
     steps:
       - checkout
       - run:
@@ -33,24 +33,24 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Move into emulator
-          command: cd ${ANDROID_HOME}/emulator
-      - run:
-          name: Setup emulator
-          command: sdkmanager "system-images;android-25;google_apis;arm64-v8a" && echo "no" | avdmanager create avd -n test -k "system-images;android-25;google_apis;arm64-v8a"
-      - run:
-          name: Launch emulator
-          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && export PATH="${ANDROID_HOME}/emulator:$PATH" && emulator -avd test -netdelay none -netspeed full -no-window -no-audio -gpu off
-          background: true
-      - run:
-          name: Wait emulator
-          command: |
-            # wait for it to have booted
-            circle-android wait-for-boot
-            # unlock the emulator screen
-            sleep 30
-            adb shell input keyevent 82
+      # - run:
+      #     name: Move into emulator
+      #     command: cd ${ANDROID_HOME}/emulator
+      # - run:
+      #     name: Setup emulator
+      #     command: sdkmanager "system-images;android-25;google_apis;arm64-v8a" && echo "no" | avdmanager create avd -n test -k "system-images;android-25;google_apis;arm64-v8a"
+      # - run:
+      #     name: Launch emulator
+      #     command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && export PATH="${ANDROID_HOME}/emulator:$PATH" && emulator -avd test -netdelay none -netspeed full -no-window -no-audio -gpu off
+      #     background: true
+      # - run:
+      #     name: Wait emulator
+      #     command: |
+      #       # wait for it to have booted
+      #       circle-android wait-for-boot
+      #       # unlock the emulator screen
+      #       sleep 30
+      #       adb shell input keyevent 82
       - run:
           name: Run EspressoTests
           command: ./gradlew connectedAndroidTest
