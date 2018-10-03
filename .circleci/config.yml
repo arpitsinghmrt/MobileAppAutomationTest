@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/code
     docker:
       # Android the primary container
-      - image: circleci/android:api-26-alpha
+      - image: bitriseio/docker-android
     environment:
       TERM: dumb
       _JAVA_OPTIONS: "-Xmx2048m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
