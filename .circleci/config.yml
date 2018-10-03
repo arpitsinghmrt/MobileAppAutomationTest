@@ -36,7 +36,7 @@ jobs:
           command: sdkmanager "system-images;android-25;google_apis;arm64-v8a" && echo "no" | avdmanager create avd -n test -k "system-images;android-25;google_apis;arm64-v8a"
       - run:
           name: Launch emulator
-          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator -avd test -netdelay none -netspeed full -no-window -no-audio -gpu off
+          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && && export PATH="${ANDROID_HOME}/emulator:$PATH" &&emulator -avd test -netdelay none -netspeed full -no-window -no-audio -gpu off
           background: true
       - run:
           name: Wait emulator
