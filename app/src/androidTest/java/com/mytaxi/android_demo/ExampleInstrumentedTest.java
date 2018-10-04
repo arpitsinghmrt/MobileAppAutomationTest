@@ -43,6 +43,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
@@ -66,6 +67,7 @@ public class ExampleInstrumentedTest {
     public void setActivity() {
         mActivity = mActivityRule.getActivity();
     }
+
     @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
@@ -85,7 +87,7 @@ public class ExampleInstrumentedTest {
 
         Thread.sleep(2000);
         onView(allOf(withId(R.id.textSearch), isDisplayed()))
-                .perform(typeText("sa"), closeSoftKeyboard());
+                .perform(typeText("sa"),closeSoftKeyboard());
         onView(withText("Sarah Scott"))
                 .inRoot(withDecorView(not(is(mActivity.getWindow().getDecorView()))))
                 .perform(click());
