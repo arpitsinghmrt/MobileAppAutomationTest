@@ -24,7 +24,7 @@ jobs:
               path: app/build/reports
               destination: reports
     - store_test_results:
-              path: app/build/reports/androidTests/connected
+              path: test
 workflows:
   version: 2
   workflow:
