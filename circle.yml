@@ -15,7 +15,7 @@ jobs:
         background: true
     - run:
         name: sleep
-        command: sleep 360
+        command: sleep 240
     - run:
         name: Run Tests
         command: ./gradlew connectedAndroidTest
@@ -24,7 +24,7 @@ jobs:
               path: app/build/reports
               destination: reports
     - store_test_results:
-              path: app/build/reports/androidTests/connected/com.android.builder.testing.ConnectedDevice.html
+              path: app/build/reports
 
 workflows:
   version: 2
