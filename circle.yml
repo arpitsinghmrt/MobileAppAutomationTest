@@ -24,7 +24,8 @@ jobs:
               path: app/build/reports
               destination: reports
     - store_test_results:
-              path: app/build/test-results
+              path: app/build/reports/androidTests/connected/com.android.builder.testing.ConnectedDevice.html
+
 workflows:
   version: 2
   workflow:
