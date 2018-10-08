@@ -24,7 +24,7 @@ jobs:
               path: app/build/reports
               destination: reports
     - store_test_results:
-              path: app/build
+              path: app/build/test-results
 workflows:
   version: 2
   workflow:
